@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/mongodbConfig')
-
+const cors = require('cors')
 dotenv.config();
 
 const app = express();
-
+app.use(cors())
 // Middleware
 app.use(bodyParser.json());
 
