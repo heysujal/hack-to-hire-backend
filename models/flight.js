@@ -11,7 +11,8 @@ const flightSchema = new mongoose.Schema({
     actual_departure: { type: Date, default: null },
     actual_arrival: { type: Date, default: null },
     from: { type: String, required: true },
-    to: { type: String, required: true }
+    to: { type: String, required: true },
+    
 });
 
 module.exports = mongoose.model('Flight', flightSchema);

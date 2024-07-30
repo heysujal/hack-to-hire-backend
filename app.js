@@ -4,18 +4,21 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const connectDB = require('./config/mongodbConfig')
 const cors = require('cors')
+const app = express();
 dotenv.config();
 
-const app = express();
 app.use(cors())
 // Middleware
 app.use(bodyParser.json());
 
 // Import Routes
 const flightRoutes = require('./routes/flightRoutes');
-
+const subscriptionRoutes = require('./routes/subscriptionRoutes')
+const notificationRoutes = require('./routes/notificationRoutes')
 // Route Middlewares
 app.use('/api/flights', flightRoutes);
+app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/notifications', notificationRoutes);
 
 // Connect to MongoDB
 // mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true })
