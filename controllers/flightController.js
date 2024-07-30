@@ -50,27 +50,6 @@ exports.getFlightById = async (req, res) => {
   }
 };
 
-// Update a flight
-exports.updateFlight = async (req, res) => {
-  try {
-    const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-    if (!flight) return res.status(404).json({ message: 'Flight not found' });
-    res.json(flight);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
-
-// Delete a flight
-exports.deleteFlight = async (req, res) => {
-  try {
-    const flight = await Flight.findByIdAndDelete(req.params.id);
-    if (!flight) return res.status(404).json({ message: 'Flight not found' });
-    res.json({ message: 'Flight deleted' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
 
 
 // Search flights
