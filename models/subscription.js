@@ -11,7 +11,7 @@ const subscriberSchema = new mongoose.Schema({
     required: true
   }
 });
-
+ 
 const subscriptionSchema = new mongoose.Schema({
   flightId: {
     type: String,

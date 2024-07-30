@@ -1,6 +1,6 @@
 const Subscription = require('../models/subscription');
 
-// Add a subscriber to a flight
+// Add a subscriber to a flight 
 exports.addSubscriber = async (req, res) => {
     const { flightId } = req.params;
     const { contactInfo, notificationMethod } = req.body;

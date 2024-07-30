@@ -15,12 +15,10 @@ app.use(bodyParser.json());
 const flightRoutes = require('./routes/flightRoutes');
 const subscriptionRoutes = require('./routes/subscriptionRoutes')
 const adminRoutes = require('./routes/adminRoutes')
-const notificationRoutes = require('./routes/notificationRoutes')
 // Route Middlewares
 app.use('/api/flights', flightRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/admin', adminRoutes)
-app.use('/api/notifications', notificationRoutes);
 
 // Connect to MongoDB
 // mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true })
