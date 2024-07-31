@@ -5,6 +5,7 @@ const twilio = require('twilio');
 const Admin = require('../models/admin'); // Make sure you have an Admin model defined
 const Flight = require('../models/flight');
 const Subscription = require('../models/subscription'); // Make sure you have a Subscription model defined
+const { getIo } = require('../config/socketConfig');
 
 // Replace with your actual JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -111,7 +112,13 @@ exports.updateFlightById = async (req, res) => {
         Arrival Gate: ${flight.arrival_gate}
       `;
 
-      
+      // Senting notification through Socket.io
+      try{
+        const io = getIo();
+        io.emit('flightDetailsUpdate', flight);
+      }catch(err){
+        console.log(err)
+      }
 
       // Send notifications to all subscribers
       for (const subscriber of subscribers) {
