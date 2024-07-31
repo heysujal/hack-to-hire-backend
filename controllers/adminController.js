@@ -131,7 +131,7 @@ exports.updateFlightById = async (req, res) => {
           await twilioClient.messages.create({
             body: `Update on Flight ${flight.flight_id}: The details have been updated. Check the flight tracker app for more information.\n\n${message}`,
             from: process.env.TWILIO_PHONE_NUMBER,
-            to: '+91' + contactInfo,
+            to: '+' + contactInfo,
           });
         }
       }
