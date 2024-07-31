@@ -92,6 +92,12 @@ exports.updateFlightById = async (req, res) => {
 
     await flight.save();
     didUpdate = true;
+      // Senting notification through Socket.io
+
+    const io = getIo();
+    io.emit('flightDetailsUpdate', flight);
+
+
     // Notify subscribers after updating the flight
     const subscription = await Subscription.findOne({ flightId: flight.flight_id });
     if (subscription) {
